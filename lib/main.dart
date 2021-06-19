@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:wanandroid/base/base_stateless_widget.dart';
 import 'package:wanandroid/controller/main_page_controller.dart';
+import 'package:wanandroid/widget/custom_scroll_behavior.dart';
 
 void main() {
   runApp(MyApp());
+
+  SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.dark));
 }
 
 class MyApp extends StatelessWidget {
@@ -19,19 +25,39 @@ class MyApp extends StatelessWidget {
 }
 
 class MainPage extends BaseStatelessWidget<MainPageController> {
-
   @override
-  BottomNavigationBar? bottomNavigationBar() {
-    return BottomNavigationBar(items:controller.bottomNavigationItems());
+  Widget? bottomNavigationBar() {
+    return Obx(
+      () => BottomNavigationBar(
+        items: controller.bottomNavigationItems(),
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        onTap: (index) => controller.onTabClick(index),
+        currentIndex: controller.currentPageIndex.value,
+      ),
+    );
   }
 
   @override
   getController() {
-    return MainPageController();
+    return Get.put(MainPageController());
   }
 
   @override
   Widget pageContent() {
-    return Container();
+    return ScrollConfiguration(
+      behavior: CustomScrollBehavior(),
+      child: PageView(
+        physics: PageScrollPhysics(),
+        controller: controller.pageController,
+        children: controller.navigationPages(),
+        onPageChanged: (index) => controller.onPageChanged(index),
+      ),
+    );
+  }
+
+  @override
+  bool showAppBar() {
+    return false;
   }
 }

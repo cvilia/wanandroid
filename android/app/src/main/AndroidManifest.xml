@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cvilia.wanandroid.wanandroid">
-   <application
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <application
         android:label="wanandroid"
         android:icon="@mipmap/ic_launcher">
         <activity

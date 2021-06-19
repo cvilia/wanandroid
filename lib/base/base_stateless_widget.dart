@@ -3,13 +3,16 @@ import 'package:get/get.dart';
 
 abstract class BaseStatelessWidget<T> extends StatelessWidget {
   late final T controller;
+  late final BuildContext context;
 
   @override
   Widget build(BuildContext context) {
     controller = getController();
+    this.context = context;
     return WillPopScope(
       onWillPop: onBackPress,
       child: Scaffold(
+        backgroundColor: Colors.white,
         bottomNavigationBar: bottomNavigationBar(),
         appBar: showAppBar() ? _appBar() : null,
         body: pageContent(),
@@ -27,11 +30,11 @@ abstract class BaseStatelessWidget<T> extends StatelessWidget {
 
   PreferredSizeWidget? _appBar();
 
-  bool showAppBar() => true;
+  bool showAppBar() => false;
 
   T getController();
 
-  BottomNavigationBar? bottomNavigationBar() {
+  Widget? bottomNavigationBar() {
     return null;
   }
 }

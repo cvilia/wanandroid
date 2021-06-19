@@ -1,5 +1,6 @@
 class Api {
   static const String SERVER = 'https://www.wanandroid.com';
+  static const String HOME_BANNER = '/banner/json';
 
   ///获取公众号列表 get
   static const String WX_ARTICLE = '/wxarticle/chapters/json';

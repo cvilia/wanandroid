@@ -6,13 +6,9 @@ import 'package:wanandroid/controller/my_page_controller.dart';
 class MyPage extends BaseStatelessWidget<MyPageController> {
   @override
   Widget pageContent() {
-    return Container();
-  }
-
-  @override
-  bool showAppBar() {
-    // TODO: implement showAppBar
-    return super.showAppBar();
+    return Center(
+      child: Text('我的'),
+    );
   }
 
   @override
