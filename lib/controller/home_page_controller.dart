@@ -42,7 +42,7 @@ class HomePageController extends GetxController {
     // }else if(link.contains('http://www.')){
     //   link = link.replaceRange(0, 11, 'http://');
     // }
-    Get.to(()=>WebPage(),arguments: articles.link!);
+    Get.to(() => WebPage(), arguments: articles.link!);
   }
 
   Future<void> requestData(bool isRefresh) async {
@@ -61,6 +61,7 @@ class HomePageController extends GetxController {
       if (jsonMap['errorCode'] == 0) {
         List<Article> result = HomeArticleModel.fromJson(jsonMap).data!.articles!;
         totalPages = HomeArticleModel.fromJson(jsonMap).data!.pageCount!;
+        urlIndex++;
         if (isRefresh) {
           articles.value = result;
         } else {
