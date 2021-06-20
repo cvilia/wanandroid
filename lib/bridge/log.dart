@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 
-const MethodChannel logChannel = MethodChannel('com.cvilia.wanandroid.log/log');
+const MethodChannel logChannel = MethodChannel('com.cvilia.wanandroid.io/log');
 
 class Log {
   static void d(String key, String message) {

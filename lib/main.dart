@@ -15,10 +15,18 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        hintColor: Color(0xffb0b0b0),
+        textTheme: TextTheme(
+          headline6: TextStyle(color: Color(0xff1a1a1a), fontSize: 15),
+          subtitle1: TextStyle(color: Color(0xff1a1a1a), fontSize: 12),
+          bodyText1: TextStyle(color: Color(0xff1a1a1a), fontSize: 15),
+          bodyText2: TextStyle(color: Color(0xff1a1a1a), fontSize: 10),
+        ),
       ),
+      debugShowCheckedModeBanner: false,
       home: MainPage(),
     );
   }

@@ -8,7 +8,7 @@ class MainActivity: FlutterActivity() {
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        WanAndroidBridgeManager.init(flutterEngine)
+        WanAndroidBridgeManager.init(flutterEngine,this)
     }
 
 }

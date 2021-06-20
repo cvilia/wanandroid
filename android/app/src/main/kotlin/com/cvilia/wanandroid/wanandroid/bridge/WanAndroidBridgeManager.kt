@@ -1,5 +1,6 @@
 package com.cvilia.wanandroid.wanandroid.bridge
 
+import com.cvilia.wanandroid.wanandroid.MainActivity
 import io.flutter.embedding.engine.FlutterEngine
 
 /**
@@ -11,8 +12,9 @@ import io.flutter.embedding.engine.FlutterEngine
 class WanAndroidBridgeManager {
     companion object {
         @JvmStatic
-        fun init(flutterEngine: FlutterEngine) {
+        fun init(flutterEngine: FlutterEngine,activity: MainActivity) {
             LogBridgeManager.init(flutterEngine)
+            ToastBridgeManager.init(flutterEngine,activity)
         }
     }
 }

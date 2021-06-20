@@ -1,3 +1,5 @@
+package com.cvilia.wanandroid.wanandroid.bridge
+
 import android.util.Log
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
@@ -13,7 +15,7 @@ import io.flutter.plugin.common.MethodChannel
 class LogBridgeManager {
 
     companion object {
-        private const val logChannelName: String = "com.cvilia.wanandroid.log/log"
+        private const val logChannelName: String = "com.cvilia.wanandroid.io/log"
 
         @JvmStatic
         fun init(flutterEngine: FlutterEngine) {

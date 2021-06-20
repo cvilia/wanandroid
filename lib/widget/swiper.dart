@@ -2,34 +2,46 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wanandroid/controller/swiper_controller.dart';
+import 'package:wanandroid/model/home_banner_model.dart';
 import 'package:wanandroid/widget/keep_alive_manager.dart';
 
 enum IndicatorType { circle, point }
 
+typedef OnSwiperItemClick = Function(MyBanner banner);
+
 class Swiper extends GetView<SwiperController> {
+  final OnSwiperItemClick onItemClick;
+
+  const Swiper({required this.onItemClick});
+
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.bottomCenter,
-      children: [
-        PageView.builder(
-          physics: PageScrollPhysics(),
-          controller: controller.pageController,
-          itemBuilder: (context, index) {
-            return KeepAliveManager(
-              child: Container(
-                height: 150,
-                width: double.infinity,
-                child: Obx(
-                    () => CachedNetworkImage(imageUrl: controller.banners.value![index].imagePath!, fit: BoxFit.cover)),
-              ),
-            );
-          },
-          itemCount: controller.banners.value!.length,
-        ),
-        Positioned(
-          bottom: 5,
-          child: Obx(() => Row(
+    return Obx(() {
+      if (controller.banners.value != null) {
+        return Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            PageView.builder(
+              physics: PageScrollPhysics(),
+              controller: controller.pageController,
+              itemBuilder: (context, index) {
+                return KeepAliveManager(
+                  child: GestureDetector(
+                    onTap: () => onItemClick(controller.banners.value![index]),
+                    child: Container(
+                      height: 150,
+                      width: double.infinity,
+                      child: CachedNetworkImage(
+                          imageUrl: controller.banners.value![index].imagePath!, fit: BoxFit.cover),
+                    ),
+                  ),
+                );
+              },
+              itemCount: controller.banners.value!.length,
+            ),
+            Positioned(
+              bottom: 5,
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: controller.banners.value!
                     .map(
@@ -47,10 +59,13 @@ class Swiper extends GetView<SwiperController> {
                       ),
                     )
                     .toList(),
-              )),
-        )
-      ],
-    );
+              ),
+            )
+          ],
+        );
+      }
+      return Container();
+    });
   }
 
   @override
