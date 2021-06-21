@@ -17,15 +17,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        hintColor: Color(0xffb0b0b0),
-        textTheme: TextTheme(
-          headline6: TextStyle(color: Color(0xff1a1a1a), fontSize: 15),
-          subtitle1: TextStyle(color: Color(0xff1a1a1a), fontSize: 12),
-          bodyText1: TextStyle(color: Color(0xff1a1a1a), fontSize: 15),
-          bodyText2: TextStyle(color: Color(0xff1a1a1a), fontSize: 10),
-        ),
-      ),
+          primarySwatch: Colors.blue,
+          hintColor: Color(0xffb0b0b0),
+          splashColor: Colors.transparent,
+          primaryColor: Colors.teal,
+          backgroundColor: Colors.white,
+          textTheme: TextTheme(
+            headline6: TextStyle(color: Color(0xff1a1a1a), fontSize: 15),
+            subtitle1: TextStyle(color: Color(0xff1a1a1a), fontSize: 12),
+            bodyText1: TextStyle(color: Color(0xff1a1a1a), fontSize: 15),
+            bodyText2: TextStyle(color: Color(0xff1a1a1a), fontSize: 10),
+          ),
+          iconTheme: IconThemeData(color: Colors.white)),
       debugShowCheckedModeBanner: false,
       home: MainPage(),
     );
@@ -62,10 +65,5 @@ class MainPage extends BaseStatelessWidget<MainPageController> {
         onPageChanged: (index) => controller.onPageChanged(index),
       ),
     );
-  }
-
-  @override
-  bool showAppBar() {
-    return false;
   }
 }

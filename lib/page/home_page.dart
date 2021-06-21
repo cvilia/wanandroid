@@ -38,46 +38,7 @@ class HomePage extends BaseStatelessWidget<HomePageController> {
                     ),
                     SliverFixedExtentList(
                       delegate: SliverChildBuilderDelegate(
-                        (ctx, index) {
-                          return GestureDetector(
-                            onTap: () => controller.onClickArticle(articles[index]),
-                            child: Card(
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      child: Text(
-                                        articles[index].superChapterName!,
-                                        style: Theme.of(context).textTheme.subtitle1,
-                                      ),
-                                    ),
-                                    Text(
-                                      articles[index].title!,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: Theme.of(context).textTheme.headline6,
-                                    ),
-                                    Text(
-                                      articles[index].author! == '' ? '未知作者' : articles[index].author!,
-                                      style: Theme.of(context).textTheme.subtitle1,
-                                    ),
-                                    Container(
-                                      alignment: Alignment.bottomRight,
-                                      child: Text(
-                                        articles[index].niceDate!,
-                                        style: Theme.of(context).textTheme.bodyText2,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
-                        },
+                        (ctx, index) => _articleItem(articles[index]),
                         childCount: articles.length,
                       ),
                       itemExtent: 100,
@@ -86,6 +47,45 @@ class HomePage extends BaseStatelessWidget<HomePageController> {
                 ),
         );
       }),
+    );
+  }
+
+  Widget _articleItem(Article article) {
+    return GestureDetector(
+      onTap: () => controller.onClickArticle(article),
+      child: Card(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                alignment: Alignment.topLeft,
+                child: Text(article.superChapterName!, style: Theme.of(context).textTheme.subtitle1),
+              ),
+              Text(article.title!,
+                  maxLines: 1, overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.headline6),
+              Text(article.author! == '' ? '未知作者' : article.author!, style: Theme.of(context).textTheme.subtitle1),
+              Container(
+                alignment: Alignment.bottomRight,
+                child: Text(article.niceDate!, style: Theme.of(context).textTheme.bodyText2),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  AppBar? appBar() {
+    // TODO: implement appBar
+    return AppBar(
+      title: Text(
+        '首页',
+        style: TextStyle(color: Colors.white, fontSize: 20),
+      ),
     );
   }
 }

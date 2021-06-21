@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 abstract class BaseStatelessWidget<T> extends StatelessWidget {
   late final T controller;
@@ -12,9 +11,8 @@ abstract class BaseStatelessWidget<T> extends StatelessWidget {
     return WillPopScope(
       onWillPop: onBackPress,
       child: Scaffold(
-        backgroundColor: Colors.white,
         bottomNavigationBar: bottomNavigationBar(),
-        appBar: showAppBar() ? _appBar() : null,
+        appBar: appBar(),
         body: pageContent(),
       ),
     );
@@ -28,13 +26,9 @@ abstract class BaseStatelessWidget<T> extends StatelessWidget {
     return true;
   }
 
-  PreferredSizeWidget? _appBar();
-
-  bool showAppBar() => false;
+  AppBar? appBar() => null;
 
   T getController();
 
-  Widget? bottomNavigationBar() {
-    return null;
-  }
+  Widget? bottomNavigationBar() => null;
 }

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/diagnostics.dart';
 import 'package:get/get.dart';
-import 'package:wanandroid/base/base_stateless_widget.dart';
-import 'package:wanandroid/main.dart';
 import 'package:wanandroid/page/home_page.dart';
 import 'package:wanandroid/page/my_page.dart';
 import 'package:wanandroid/widget/keep_alive_manager.dart';
