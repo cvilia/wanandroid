@@ -2,11 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wanandroid/base/base_controller.dart';
 import 'package:wanandroid/http/api.dart';
 import 'package:wanandroid/http/dio_helper.dart';
 import 'package:wanandroid/model/home_banner_model.dart';
 
-class SwiperController extends GetxController with SingleGetTickerProviderMixin {
+class SwiperController extends BaseController with SingleGetTickerProviderMixin {
   var animaValue = 0.obs;
   late AnimationController animatedController;
   late Animation<int> animation;
@@ -14,8 +15,7 @@ class SwiperController extends GetxController with SingleGetTickerProviderMixin 
   late PageController pageController;
 
   @override
-  void onInit() {
-    super.onInit();
+  void init() {
     pageController = PageController();
     requestBanner();
   }

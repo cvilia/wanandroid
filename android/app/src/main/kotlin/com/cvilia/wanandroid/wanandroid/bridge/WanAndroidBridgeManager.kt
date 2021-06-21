@@ -15,6 +15,7 @@ class WanAndroidBridgeManager {
         fun init(flutterEngine: FlutterEngine,activity: MainActivity) {
             LogBridgeManager.init(flutterEngine)
             ToastBridgeManager.init(flutterEngine,activity)
+            MMKVBridgeManager.init(flutterEngine)
         }
     }
 }

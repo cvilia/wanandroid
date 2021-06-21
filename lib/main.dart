@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:wanandroid/app/global_app.dart';
 import 'package:wanandroid/base/base_stateless_widget.dart';
 import 'package:wanandroid/controller/main_page_controller.dart';
 import 'package:wanandroid/widget/custom_scroll_behavior.dart';
 
 void main() {
-  runApp(MyApp());
-
+  GlobalApp.init().then((value) => runApp(MyApp()));
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.dark));
 }

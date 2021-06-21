@@ -29,7 +29,7 @@ class Log {
     } on MissingPluginException {
       print('bridge Log miss plugin');
     } on PlatformException catch (e) {
-      print('invoke method Log.$message error,error message:${e.message}');
+      print('invoke method Log.$method error,error message:${e.message}');
     }
   }
 }

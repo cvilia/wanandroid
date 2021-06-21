@@ -1,6 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SpUtil {
+  
   static Future<String?> getString(String key) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     return sp.getString(key);

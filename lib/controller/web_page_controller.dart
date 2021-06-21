@@ -2,11 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:wanandroid/base/base_controller.dart';
 import 'package:wanandroid/bridge/log.dart';
 import 'package:wanandroid/bridge/toast.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class WebPageController extends GetxController {
+class WebPageController extends BaseController {
   final String tag = 'WebPageController';
   var progress = 0.0.obs;
   var showProgress = true.obs;
@@ -17,12 +18,6 @@ class WebPageController extends GetxController {
     Log.d(tag, '当前进度${this.progress.value}');
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-    link = Get.arguments;
-    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
-  }
 
   onShare(int shareType) {
     Get.back();
@@ -36,5 +31,11 @@ class WebPageController extends GetxController {
       Toast.showShort(link);
       Clipboard.setData(ClipboardData(text: link));
     }
+  }
+
+  @override
+  void init() {
+    link = Get.arguments;
+    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
   }
 }

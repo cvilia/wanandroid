@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:wanandroid/page/my_page.dart';
+import 'package:wanandroid/base/base_controller.dart';
 
-class MyPageController extends GetxController {
-
+class MyPageController extends BaseController {
+  @override
+  void init() {}
 }

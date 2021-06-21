@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wanandroid/base/base_controller.dart';
 import 'package:wanandroid/page/home_page.dart';
 import 'package:wanandroid/page/my_page.dart';
 import 'package:wanandroid/widget/keep_alive_manager.dart';
 
-class MainPageController extends GetxController {
+class MainPageController extends BaseController {
   late PageController pageController;
   var currentPageIndex = 0.obs;
 
@@ -14,12 +15,6 @@ class MainPageController extends GetxController {
       ];
 
   List<Widget> navigationPages() => [KeepAliveManager(child: HomePage()), KeepAliveManager(child: MyPage())];
-
-  @override
-  void onInit() {
-    pageController = PageController();
-    super.onInit();
-  }
 
   void onPageChanged(int index) {
     if (index != currentPageIndex.value) {
@@ -38,5 +33,10 @@ class MainPageController extends GetxController {
   void dispose() {
     pageController.dispose();
     super.dispose();
+  }
+
+  @override
+  void init() {
+    pageController = PageController();
   }
 }
