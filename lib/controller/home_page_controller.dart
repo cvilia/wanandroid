@@ -2,15 +2,14 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:wanandroid/base/base_controller.dart';
 import 'package:wanandroid/bridge/log.dart';
-import 'package:wanandroid/bridge/toast.dart';
-import 'package:wanandroid/controller/web_page_controller.dart';
 import 'package:wanandroid/http/dio_helper.dart';
 import 'package:wanandroid/model/home_article_model.dart';
 import 'package:wanandroid/model/home_banner_model.dart';
 import 'package:wanandroid/page/web_page.dart';
 
-class HomePageController extends GetxController {
+class HomePageController extends BaseController {
   static const String tag = 'HomePageController';
 
   late RefreshController refreshController;
@@ -25,8 +24,7 @@ class HomePageController extends GetxController {
   int totalPages = 999999;
 
   @override
-  void onInit() {
-    super.onInit();
+  void init() {
     refreshController = RefreshController(initialRefresh: true);
   }
 
@@ -71,4 +69,5 @@ class HomePageController extends GetxController {
       }
     });
   }
+
 }

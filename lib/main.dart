@@ -9,7 +9,7 @@ import 'package:wanandroid/widget/custom_scroll_behavior.dart';
 void main() {
   GlobalApp.init().then((value) => runApp(MyApp()));
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.dark));
+      SystemUiOverlayStyle(statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.light));
 }
 
 class MyApp extends StatelessWidget {

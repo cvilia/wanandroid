@@ -13,7 +13,11 @@ abstract class BaseStatelessWidget<T> extends StatelessWidget {
       child: Scaffold(
         bottomNavigationBar: bottomNavigationBar(),
         appBar: appBar(),
-        body: pageContent(),
+        body: GestureDetector(
+          onTap: () => hideKeyboard() ? FocusScope.of(context).requestFocus(FocusNode()) : null,
+          child: pageContent(),
+          behavior: HitTestBehavior.translucent,
+        ),
       ),
     );
   }
@@ -25,6 +29,8 @@ abstract class BaseStatelessWidget<T> extends StatelessWidget {
   Future<bool> onBackPress() async {
     return true;
   }
+
+  bool hideKeyboard() => false;
 
   AppBar? appBar() => null;
 
