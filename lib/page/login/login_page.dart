@@ -42,7 +42,7 @@ class LoginPage extends BaseStatelessWidget<LoginPageController> {
     return _contentScaffold(
       [
         Text('欢迎回来', style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 30, fontWeight: FontWeight.bold)),
-        _editScaffold(labelText: '用户名', controller: controller.loginAccountController, paddingTop: 150),
+        _editScaffold(labelText: '用户名', controller: controller.loginAccountController, paddingTop: 80),
         _editScaffold(labelText: '密码', controller: controller.loginPasswordController, paddingTop: 50),
         Container(
           alignment: Alignment.center,

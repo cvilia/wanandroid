@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
+///最开始的时候设置的controller和context都是final的，所以不能重复赋值，所以会报已经初始化过的错误
 abstract class BaseStatelessWidget<T> extends StatelessWidget {
-  late final T controller;
-  late final BuildContext context;
+  late T controller;
+  late BuildContext context;
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +12,7 @@ abstract class BaseStatelessWidget<T> extends StatelessWidget {
     return WillPopScope(
       onWillPop: onBackPress,
       child: Scaffold(
+        resizeToAvoidBottomInset: !hideKeyboard(),
         bottomNavigationBar: bottomNavigationBar(),
         appBar: appBar(),
         body: GestureDetector(
