@@ -1,26 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wanandroid/base/base_controller.dart';
+import 'package:wanandroid/page/login/register_page.dart';
 
 class LoginPageController extends BaseController {
   var pageType = true.obs;
   late final TextEditingController loginAccountController;
   late final TextEditingController loginPasswordController;
 
-  late final TextEditingController registerAccountController;
-  late final TextEditingController registerPasswordController;
-  late final TextEditingController registerPasswordAgainController;
-  late final TextEditingController registerVerifyCodeController;
-
   @override
   void init() {
     loginAccountController = TextEditingController();
     loginPasswordController = TextEditingController();
-
-    registerAccountController = TextEditingController();
-    registerPasswordController = TextEditingController();
-    registerPasswordAgainController = TextEditingController();
-    registerVerifyCodeController = TextEditingController();
   }
 
   ///登录
@@ -43,10 +34,9 @@ class LoginPageController extends BaseController {
     super.dispose();
     loginAccountController.dispose();
     loginPasswordController.dispose();
-
-    registerAccountController.dispose();
-    registerPasswordController.dispose();
-    registerPasswordAgainController.dispose();
-    registerVerifyCodeController.dispose();
   }
+
+  void forgetPassword() {}
+
+  void switchRegister() => Get.to(() => RegisterPage());
 }

@@ -28,90 +28,67 @@ class LoginPage extends BaseStatelessWidget<LoginPageController> {
   }
 
   Widget _pageContent() {
-    return Obx(() {
-      if (controller.pageType.value) {
-        return _loginWidget();
-      } else {
-        return _registerWidget();
-      }
-    });
-  }
-
-  ///登录控件
-  Widget _loginWidget() {
-    return _contentScaffold(
-      [
-        Text('欢迎回来', style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 30, fontWeight: FontWeight.bold)),
-        _editScaffold(labelText: '用户名', controller: controller.loginAccountController, paddingTop: 80),
-        _editScaffold(labelText: '密码', controller: controller.loginPasswordController, paddingTop: 50),
-        Container(
-          alignment: Alignment.center,
-          height: 60,
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          margin: EdgeInsets.only(top: 30),
-          child: GestureDetector(
-            child: CircleAvatar(
-              backgroundColor: Color(0xfffd8c95),
-              radius: 30,
-              child: Icon(Icons.arrow_forward, size: 40, color: Colors.white),
-            ),
-            onTap: () => controller.login(),
-          ),
-        ),
-        _bottomButtonScaffold(leftText: '注册账号', rightText: '忘记密码'),
-      ],
-    );
-  }
-
-  Widget _registerWidget() {
-    return _contentScaffold(
-      [
-        Text(
-          '创建账号',
-          style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
-        ),
-        _editScaffold(labelText: '请输入用户名', controller: controller.registerAccountController, paddingTop: 50),
-        _editScaffold(labelText: '请输入密码', controller: controller.registerPasswordController, paddingTop: 20),
-        _editScaffold(labelText: '请再次输入密码', controller: controller.registerPasswordAgainController, paddingTop: 20),
-        _editScaffold(labelText: '请输入验证码', controller: controller.registerVerifyCodeController, paddingTop: 20),
-        Container(
-          alignment: Alignment.center,
-          height: 60,
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          margin: EdgeInsets.only(top: 30),
-          child: GestureDetector(
-            child: CircleAvatar(
-              backgroundColor: Color(0xfffd8c95),
-              radius: 30,
-              child: Icon(Icons.arrow_forward, size: 40, color: Colors.white),
-            ),
-            onTap: () => controller.register(),
-          ),
-        ),
-        _bottomButtonScaffold(leftText: '注册账号'),
-      ],
-    );
-  }
-
-  Widget _bottomButtonScaffold({required String leftText, String rightText = '1'}) {
     return Container(
-      alignment: Alignment.centerLeft,
-      height: 60,
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 15),
-      margin: EdgeInsets.only(top: 30),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [_inkText(leftText), if (controller.pageType.value) _inkText(rightText)],
-      ),
+      color: Color(0xff804070),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: IconButton(
+            onPressed: () => Get.back(),
+            icon: Icon(Icons.arrow_back_ios),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(right: 30, left: 30, top: 100),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '欢迎回来',
+                style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              _editScaffold(labelText: '用户名', controller: controller.loginAccountController, paddingTop: 80),
+              _editScaffold(labelText: '密码', controller: controller.loginPasswordController, paddingTop: 50),
+              Container(
+                alignment: Alignment.center,
+                height: 60,
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                margin: EdgeInsets.only(top: 30),
+                child: GestureDetector(
+                  child: CircleAvatar(
+                    backgroundColor: Color(0xfffd8c95),
+                    radius: 30,
+                    child: Icon(Icons.arrow_forward, size: 40, color: Colors.white),
+                  ),
+                  onTap: () => controller.login(),
+                ),
+              ),
+              Container(
+                alignment: Alignment.centerLeft,
+                height: 60,
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                margin: EdgeInsets.only(top: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [_inkText('注册账号'), _inkText('忘记密码')],
+                ),
+              )
+            ],
+          ),
+        )
+      ]),
     );
   }
 
-  Widget _inkText(String text) {
+  Widget _inkText(String text,{bool isSwitchRegister = true}) {
     return InkWell(
-      onTap: () => controller.switchPageType(),
+      onTap: () => isSwitchRegister?controller.switchRegister():controller.forgetPassword(),
       child: Text(
         text,
         style: TextStyle(
@@ -146,31 +123,6 @@ class LoginPage extends BaseStatelessWidget<LoginPageController> {
       ),
     );
   }
-
-  Widget _contentScaffold(List<Widget> children) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: IconButton(
-            onPressed: () => Get.back(),
-            icon: Icon(Icons.arrow_back_ios),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(right: 30, left: 30, top: 100),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: children,
-          ),
-        )
-      ]),
-    );
-  }
 }
 
 class BubbleWidget extends StatefulWidget {
@@ -203,9 +155,9 @@ class _BubbleWidgetState extends State<BubbleWidget> with TickerProviderStateMix
     }
     _controller = AnimationController(vsync: this, duration: Duration(seconds: 1));
     _controller.addListener(() {
-     if(mounted){
-       setState(() {});
-     }
+      if (mounted) {
+        setState(() {});
+      }
     });
     _controller.repeat();
   }
