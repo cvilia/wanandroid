@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wanandroid/base/base_controller.dart';
-import 'package:wanandroid/page/login/login_page.dart';
 
 class RegisterPageController extends BaseController {
   late final TextEditingController registerAccountController;
@@ -28,5 +27,5 @@ class RegisterPageController extends BaseController {
 
   Future<void> register() async {}
 
-  void switchLogin() => Get.to(() => LoginPage());
+  void switchLogin() => Get.back();
 }
