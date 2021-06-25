@@ -3,11 +3,11 @@
 *flutter version：latest*
   
 ### 目前使用到的三方库及版本
-*get:^4.1.4*  状态管理
-*dio: ^4.0.0*  网络请求
-*cached_network_image: ^3.0.0*  图片加载
-*webview_flutter: ^2.0.8*  web页面加载
-*pull_to_refresh: ^2.0.0*  刷新库
++ *get:^4.1.4*  状态管理
++ *dio: ^4.0.0*  网络请求
++ *cached_network_image: ^3.0.0*  图片加载
++ *webview_flutter: ^2.0.8*  web页面加载
++ *pull_to_refresh: ^2.0.0*  刷新库
 
 ### 自定义UI
 首页使用到的swiper工具为简单的自定义工具，其中加入了get状态管理，如果不需要get可直接使用注销的那部分代码  
