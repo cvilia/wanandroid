@@ -80,7 +80,6 @@ class HomePage extends BaseStatelessWidget<HomePageController> {
 
   @override
   AppBar? appBar() {
-    // TODO: implement appBar
     return AppBar(
       title: Text(
         '首页',
