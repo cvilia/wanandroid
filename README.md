@@ -1,6 +1,8 @@
 ## 感谢[wanandroid](https://wanandroid.com)提供的api接口
 
-*flutter version：latest*
+***该项目所用到的第三方插件以及Flutter版本会持续更新使其保持为最新版***
+
+*flutter version:latest*
   
 ### 目前使用到的三方库及版本
 + *get:^4.1.4*  状态管理
