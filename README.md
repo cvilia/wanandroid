@@ -47,8 +47,6 @@
 * [阿里IconFont](https://www.iconfont.cn/)矢量图库
 * [UI设计网站](https://dribbble.com/) 需要梯子
 
-### 本项目仅作为学习项目
-## 与本项目同步进行的是一个仿写网易云音乐的另一个项目(Flutter版和Kotlin版)，后续做的差不多后会开源出来
 
 
 
